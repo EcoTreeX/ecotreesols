@@ -6,7 +6,7 @@
   <title>Eco Tree Solutions | Climate Action, Tree Planting &amp; Environmental Sustainability</title>
   <meta name="description" content="Eco Tree Solutions is committed to fighting climate change through tree planting, reforestation, environmental conservation, carbon offset programs, and sustainability initiatives across Nigeria and Africa." />
   <meta property="og:title" content="Eco Tree Solutions | Climate Action, Tree Planting &amp; Environmental Sustainability" />
-  <meta property="og:description" content="Growing a Greener Tomorrow. Africa's leading environmental sustainability organization." />
+  <meta property="og:description" content="Growing a Greener Tomorrow. Environmental sustainability organization committed to a greener future." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,21 +23,6 @@
           colors: {
             primary: '#166534',
             forest: '#14532D',
-            emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669' },
-            gold: '#D4AF37',
-          },
-          animation: {
-            marquee: 'marquee 30s linear infinite',
-            float: 'float 6s ease-in-out infinite',
-            'float-slow': 'float 9s ease-in-out infinite',
-            'fade-up': 'fadeUp 0.7s ease forwards',
-            pulse2: 'pulse2 2s ease-in-out infinite',
-          },
-          keyframes: {
-            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-18px)' } },
-            fadeUp: { from: { opacity: '0', transform: 'translateY(30px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
-            pulse2: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0.4' } },
           }
         }
       }
@@ -47,6 +32,11 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: #111827; background: #f8fafc; }
     h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; }
+
+    /* Page sections hidden by default */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+    /* Home is always visible on initial load */
 
     /* Scroll fade-in */
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -64,7 +54,6 @@
     .card-bar { width: 0; height: 3px; background: #166534; transition: width 0.35s ease; border-radius: 0 0 8px 8px; }
 
     /* Leaf particle */
-    .leaf-particle { position: absolute; pointer-events: none; animation: leafFloat linear infinite; opacity: 0; }
     @keyframes leafFloat {
       0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
       10%  { opacity: 0.6; }
@@ -80,7 +69,7 @@
     .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* Navbar scroll */
+    /* Navbar */
     #navbar { transition: background 0.3s, box-shadow 0.3s, padding 0.3s; }
     #navbar.scrolled { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding-top: 10px; padding-bottom: 10px; }
     #navbar.scrolled .nav-link { color: #374151; }
@@ -88,19 +77,20 @@
     #navbar.scrolled .logo-text { color: #111827; }
     #navbar.scrolled .logo-solutions { color: #166534; }
     #navbar.scrolled .logo-img { filter: none; }
+    #navbar.light { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding-top: 10px; padding-bottom: 10px; }
+    #navbar.light .nav-link { color: #374151; }
+    #navbar.light .nav-link:hover { color: #166534; }
+    #navbar.light .logo-text { color: #111827; }
+    #navbar.light .logo-solutions { color: #166534; }
+    #navbar.light .logo-img { filter: none; }
 
     /* Ring SVG animation */
     .ring-circle { stroke-dasharray: 377; stroke-dashoffset: 377; transition: stroke-dashoffset 2s ease; }
-    .ring-circle.animated { stroke-dashoffset: 0; }
 
-    /* Hero gradient bg */
+    /* Hero gradient */
     .hero-bg { background: linear-gradient(135deg, #052e16 0%, #14532d 35%, #166534 60%, #111827 100%); }
 
-    /* Glow buttons */
-    .btn-gold { box-shadow: 0 0 30px -5px rgba(212,175,55,0.45); }
-    .btn-gold:hover { box-shadow: 0 0 45px -5px rgba(212,175,55,0.6); }
-
-    /* Process step hover */
+    /* Process card */
     .process-card { transition: all 0.3s ease; }
     .process-card:hover { background: white; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12); border-color: rgba(22,101,52,0.2); }
 
@@ -108,8 +98,26 @@
     #mobile-menu { display: none; }
     #mobile-menu.open { display: flex; }
 
-    /* Counter */
+    /* Form inputs */
+    .form-input { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #e5e7eb; border-radius: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s; background: white; outline: none; }
+    .form-input:focus { border-color: #166534; box-shadow: 0 0 0 3px rgba(22,101,52,0.1); }
+    .form-label { display: block; font-weight: 600; font-size: 0.9rem; color: #374151; margin-bottom: 0.4rem; }
+
+    /* Stat number */
     .stat-num { font-variant-numeric: tabular-nums; }
+
+    /* Active nav link */
+    .nav-link.active-page { color: #34d399 !important; }
+    #navbar.light .nav-link.active-page { color: #166534 !important; }
+    #navbar.scrolled .nav-link.active-page { color: #166534 !important; }
+
+    /* Impact report bar */
+    .impact-bar { height: 10px; border-radius: 999px; background: #e5e7eb; overflow: hidden; }
+    .impact-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(to right, #166534, #34d399); width: 0; transition: width 1.8s ease; }
+    .impact-bar-fill.animated { width: var(--pct); }
+
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-18px); } }
+    @keyframes pulse2 { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
   </style>
 </head>
 <body>
@@ -117,24 +125,23 @@
 <!-- ========== NAVBAR ========== -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 py-5">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo -->
-    <a href="#home" class="flex items-center gap-2">
+    <a href="#" onclick="showPage('home')" class="flex items-center gap-2 cursor-pointer">
       <img src="./logo.png" alt="Eco Tree Solutions" class="logo-img h-10 w-auto brightness-0 invert" />
       <span class="logo-text font-heading font-bold text-base text-white hidden sm:inline">
-        ECO TREE <span class="logo-solutions text-emerald-400">SOLUTIONS</span>
+        ECO TREE <span class="logo-solutions" style="color:#34d399">SOLUTIONS</span>
       </span>
     </a>
 
     <!-- Desktop Nav -->
-    <ul class="hidden lg:flex items-center gap-6">
-      <li><a href="#home" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">Home</a></li>
-      <li><a href="#about" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">About</a></li>
-      <li><a href="#services" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">Services</a></li>
-      <li><a href="#impact" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">Impact</a></li>
-      <li><a href="#process" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">Process</a></li>
-      <li><a href="#contact" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors">Contact</a></li>
+    <ul class="hidden lg:flex items-center gap-5">
+      <li><a href="#" onclick="showPage('home')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="home">Home</a></li>
+      <li><a href="#" onclick="showPage('about')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="about">About Us</a></li>
+      <li><a href="#" onclick="showPage('services')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="services">Services</a></li>
+      <li><a href="#" onclick="showPage('impact-report')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="impact-report">Impact Report</a></li>
+      <li><a href="#" onclick="showPage('volunteer')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="volunteer">Volunteer</a></li>
+      <li><a href="#" onclick="showPage('process')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="process">Our Process</a></li>
+      <li><a href="#" onclick="showPage('contact')" class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors" data-page="contact">Contact</a></li>
     </ul>
-    <a href="mailto:contact@ecotreesolutions.com.ng?subject=Donation%20Enquiry" class="hidden lg:inline-flex px-6 py-2.5 rounded-full bg-emerald-500 text-white font-semibold text-sm hover:bg-emerald-400 transition-colors shadow-lg">Donate</a>
 
     <!-- Hamburger -->
     <button id="menu-toggle" class="lg:hidden p-2 text-white" aria-label="Menu">
@@ -145,458 +152,914 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="flex-col gap-1 bg-white shadow-xl rounded-2xl mt-2 p-4 mx-4">
-    <a href="#home" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">Home</a>
-    <a href="#about" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">About</a>
-    <a href="#services" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">Services</a>
-    <a href="#impact" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">Impact</a>
-    <a href="#process" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">Process</a>
-    <a href="#contact" class="mobile-link block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50" onclick="closeMobile()">Contact</a>
-    <a href="mailto:contact@ecotreesolutions.com.ng?subject=Donation%20Enquiry" class="mt-2 block text-center bg-primary text-white font-semibold py-3 px-4 rounded-xl" onclick="closeMobile()">Donate Now</a>
+    <a href="#" onclick="showPage('home');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Home</a>
+    <a href="#" onclick="showPage('about');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">About Us</a>
+    <a href="#" onclick="showPage('services');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Services</a>
+    <a href="#" onclick="showPage('impact-report');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Impact Report</a>
+    <a href="#" onclick="showPage('volunteer');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Volunteer</a>
+    <a href="#" onclick="showPage('process');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Our Process</a>
+    <a href="#" onclick="showPage('contact');closeMobile()" class="block py-2 px-4 text-gray-700 font-medium rounded-lg hover:bg-gray-50">Contact</a>
   </div>
 </nav>
 
-<!-- ========== HERO ========== -->
-<section id="home" class="hero-bg relative min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Leaf particles -->
-  <div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none z-10"></div>
+<!-- ================================================================
+     PAGE: HOME
+     ================================================================ -->
+<div id="page-home" class="page-section active">
 
-  <!-- Decorative circles -->
-  <div class="absolute top-20 right-10 w-72 h-72 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
-  <div class="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-green-900/30 blur-3xl pointer-events-none"></div>
+  <!-- HERO -->
+  <section class="hero-bg relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none z-10"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 rounded-full bg-emerald-500/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-green-900/30 blur-3xl pointer-events-none"></div>
 
-  <div class="relative z-20 max-w-5xl mx-auto px-4 text-center pt-24 pb-16">
-    <!-- Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8 reveal visible">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse2"></span>
-      <span class="text-white text-sm font-medium tracking-wide uppercase">Africa's Leading Environmental Initiative</span>
-    </div>
+    <div class="relative z-20 max-w-5xl mx-auto px-4 text-center pt-24 pb-16">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-tight mb-6" style="line-height:1.08">
+        Growing a<br />
+        <span style="background:linear-gradient(to right,#34d399,#bbf7d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Greener Tomorrow</span>
+      </h1>
 
-    <!-- Headline -->
-    <h1 class="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white leading-tight mb-6 reveal visible" style="line-height:1.08">
-      Growing a<br />
-      <span style="background:linear-gradient(to right,#34d399,#bbf7d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Greener Tomorrow</span>
-    </h1>
+      <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto font-medium" style="color:rgba(236,253,245,0.8)">
+        Fighting climate change through sustainable solutions, mass tree planting, and empowering communities across Africa.
+      </p>
 
-    <!-- Subheadline -->
-    <p class="text-lg md:text-xl text-emerald-50/80 mb-10 max-w-2xl mx-auto font-medium reveal visible" style="transition-delay:0.2s">
-      Fighting climate change through sustainable solutions, mass tree planting, and empowering communities across Africa.
-    </p>
-
-    <!-- Buttons -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 reveal visible" style="transition-delay:0.3s">
-      <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-lg hover:bg-emerald-400 transition-all hover:scale-105 shadow-lg">
-        Plant With Us
-      </a>
-      <a href="#about" class="w-full sm:w-auto px-8 py-4 rounded-full border-2 border-white/30 text-white font-semibold text-lg hover:bg-white hover:text-green-900 transition-all backdrop-blur-sm">
-        Learn More
-      </a>
-    </div>
-
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 pt-8 border-t border-white/10 reveal visible" style="transition-delay:0.4s">
-      <div class="flex flex-col items-center">
-        <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
-          <span class="counter" data-target="50000">0</span><span class="text-emerald-400">+</span>
-        </div>
-        <div class="text-sm text-emerald-200/70 uppercase tracking-wider font-medium">Trees Planted</div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a href="#" onclick="showPage('volunteer')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold text-lg hover:bg-emerald-400 transition-all hover:scale-105 shadow-lg">
+          Plant With Us
+        </a>
+        <a href="#" onclick="showPage('about')" class="w-full sm:w-auto px-8 py-4 rounded-full border-2 border-white/30 text-white font-semibold text-lg hover:bg-white hover:text-green-900 transition-all backdrop-blur-sm">
+          Learn More
+        </a>
       </div>
-      <div class="flex flex-col items-center">
-        <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
-          <span class="counter" data-target="120">0</span><span class="text-emerald-400">+</span>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 pt-8 border-t border-white/10">
+        <div class="flex flex-col items-center">
+          <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
+            <span class="counter" data-target="500">0</span><span style="color:#34d399">+</span>
+          </div>
+          <div class="text-sm uppercase tracking-wider font-medium" style="color:rgba(167,243,208,0.7)">Trees Planted</div>
         </div>
-        <div class="text-sm text-emerald-200/70 uppercase tracking-wider font-medium">Projects</div>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
-          <span class="counter" data-target="30">0</span><span class="text-emerald-400">+</span>
+        <div class="flex flex-col items-center">
+          <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
+            <span class="counter" data-target="15">0</span><span style="color:#34d399">+</span>
+          </div>
+          <div class="text-sm uppercase tracking-wider font-medium" style="color:rgba(167,243,208,0.7)">Projects</div>
         </div>
-        <div class="text-sm text-emerald-200/70 uppercase tracking-wider font-medium">Communities</div>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
-          <span class="counter" data-target="10">0</span><span class="text-emerald-400">+</span>
+        <div class="flex flex-col items-center">
+          <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
+            <span class="counter" data-target="10">0</span><span style="color:#34d399">+</span>
+          </div>
+          <div class="text-sm uppercase tracking-wider font-medium" style="color:rgba(167,243,208,0.7)">Communities</div>
         </div>
-        <div class="text-sm text-emerald-200/70 uppercase tracking-wider font-medium">Programs</div>
+        <div class="flex flex-col items-center">
+          <div class="text-3xl md:text-4xl font-heading font-bold text-white mb-1 stat-num">
+            <span class="counter" data-target="10">0</span><span style="color:#34d399">+</span>
+          </div>
+          <div class="text-sm uppercase tracking-wider font-medium" style="color:rgba(167,243,208,0.7)">Programs</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
-    <span class="text-white/40 text-xs tracking-widest uppercase">Scroll</span>
-    <div class="w-px h-10 bg-gradient-to-b from-white/40 to-transparent animate-bounce"></div>
-  </div>
-</section>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+      <span class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.4)">Scroll</span>
+      <div class="w-px h-10 animate-bounce" style="background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent)"></div>
+    </div>
+  </section>
 
-<!-- ========== ABOUT ========== -->
-<section id="about" class="py-24 bg-white relative overflow-hidden">
-  <div class="absolute top-0 right-0 w-1/3 h-full bg-gray-50 -skew-x-6 translate-x-16 hidden lg:block pointer-events-none"></div>
-  <div class="max-w-7xl mx-auto px-4 md:px-6 relative">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <!-- SERVICES PREVIEW -->
+  <section class="py-24" style="background:#f8fafc">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">Our Expertise</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Comprehensive Environmental Solutions</h2>
+        <p class="text-lg text-gray-600">We deliver actionable strategies and hands-on execution to help communities, governments, and corporations achieve their environmental goals.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Tree Planting</h3>
+          <p class="text-gray-600 leading-relaxed">Large-scale afforestation and urban greening initiatives.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-1">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Climate Awareness</h3>
+          <p class="text-gray-600 leading-relaxed">Campaigns educating communities on climate change.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-2">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Environmental Consultancy</h3>
+          <p class="text-gray-600 leading-relaxed">Expert advisory for sustainable business practices.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-3">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Corporate Sustainability</h3>
+          <p class="text-gray-600 leading-relaxed">Helping businesses implement CSR environmental goals.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" onclick="showPage('services')" class="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-colors">
+          View All Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
-      <!-- Text -->
-      <div class="reveal">
+  <!-- WHY CHOOSE US -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="flex flex-col lg:flex-row gap-16 items-start">
+        <div class="lg:w-1/3 reveal">
+          <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6 leading-tight">Why Partner<br/>With Us?</h2>
+          <p class="text-lg text-gray-600 mb-8">Real environmental change requires expertise, transparency, and a commitment to longevity.</p>
+          <a href="mailto:contact@ecotreesolutions.com.ng?subject=Partnership%20Enquiry" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary border-2 border-primary rounded-full hover:bg-primary hover:text-white transition-colors">
+            Start a Partnership
+          </a>
+        </div>
+        <div class="lg:w-2/3 w-full grid sm:grid-cols-2 gap-x-8 gap-y-10">
+          <div class="flex gap-4 reveal">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Verified Practices</h3><p class="text-gray-600">Our methodologies follow international conservation standards ensuring genuine impact.</p></div>
+          </div>
+          <div class="flex gap-4 reveal reveal-delay-1">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Experienced Team</h3><p class="text-gray-600">Led by environmental scientists, forestry experts, and community leaders.</p></div>
+          </div>
+          <div class="flex gap-4 reveal reveal-delay-2">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Community Focused</h3><p class="text-gray-600">We ensure local communities benefit economically from conservation efforts.</p></div>
+          </div>
+          <div class="flex gap-4 reveal reveal-delay-3">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Transparent Reporting</h3><p class="text-gray-600">Full accountability with trackable metrics and regular stakeholder reports.</p></div>
+          </div>
+          <div class="flex gap-4 reveal">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Sustainable Solutions</h3><p class="text-gray-600">We don't just plant trees; we build ecosystems that sustain themselves.</p></div>
+          </div>
+          <div class="flex gap-4 reveal reveal-delay-1">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div><h3 class="text-xl font-bold font-heading mb-2">Long-term Impact</h3><p class="text-gray-600">Monitoring programs that run for years to guarantee sapling survival.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2030 CLIMATE TARGETS -->
+  <section class="py-24 relative overflow-hidden" style="background:#14532d">
+    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image:radial-gradient(circle,white 1px,transparent 1px);background-size:30px 30px"></div>
+    <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style="background:rgba(52,211,153,0.15);color:#34d399">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span class="text-sm font-bold tracking-wide uppercase">Our 2030 Vision</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Our Climate Targets</h2>
+        <p class="text-lg" style="color:rgba(220,252,231,0.8)">These are the milestones we are working to achieve by 2030. Every tree planted, every community reached brings us closer to a greener future.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4" id="impact-grid"></div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="py-16 bg-white border-y border-gray-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
+      <h3 class="text-sm font-bold text-gray-400 tracking-widest uppercase">Trusted by leading organizations</h3>
+    </div>
+    <div class="relative flex overflow-hidden">
+      <div class="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to right,white,transparent)"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to left,white,transparent)"></div>
+      <div class="marquee-track">
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Ministry of Environment</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Global Green Fund</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Earth Action NGO</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Pan-African Bank CSR</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">West African Forestry Commission</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Sustainable Futures Ltd</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">EcoBuild Developers</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Climate Action Network</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Ministry of Environment</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Global Green Fund</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Earth Action NGO</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Pan-African Bank CSR</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">West African Forestry Commission</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Sustainable Futures Ltd</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">EcoBuild Developers</span>
+        <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Climate Action Network</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-32 overflow-hidden" style="background:#166534">
+    <div class="absolute inset-0" style="background:linear-gradient(135deg,#14532d,#166534,#0f4623)"></div>
+    <div class="absolute top-10 left-10 w-40 h-40 rounded-full blur-3xl pointer-events-none" style="background:rgba(255,255,255,0.05);animation:float 6s ease-in-out infinite"></div>
+    <div class="absolute bottom-10 right-20 w-72 h-72 rounded-full blur-3xl pointer-events-none" style="background:rgba(212,175,55,0.07);animation:float 9s ease-in-out infinite"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+      <h2 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">Ready to Make<br/>an Impact?</h2>
+      <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium" style="color:rgba(220,252,231,0.9)">
+        Become part of the movement towards a greener, more sustainable future for Africa. Every action counts.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <a href="#" onclick="showPage('volunteer')" class="w-full sm:w-auto px-10 py-5 rounded-full bg-emerald-500 text-white font-bold text-xl hover:bg-emerald-400 transition-all hover:scale-105">
+          Volunteer Today
+        </a>
+        <a href="mailto:contact@ecotreesolutions.com.ng?subject=Partnership%20Enquiry" class="w-full sm:w-auto px-10 py-5 rounded-full border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-primary transition-all">
+          Start a Partnership
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+
+<!-- ================================================================
+     PAGE: ABOUT US
+     ================================================================ -->
+<div id="page-about" class="page-section">
+  <div class="pt-28 pb-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+
+      <!-- Hero -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-6">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>
-          <span class="text-sm font-bold tracking-wide uppercase">Why We Exist</span>
+          <span class="text-sm font-bold tracking-wide uppercase">Who We Are</span>
         </div>
-        <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6 leading-tight">
-          Rooted in Purpose,<br/>
-          <span class="text-primary">Growing for the Future.</span>
-        </h2>
-        <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
-          <p>ECO TREE SOLUTIONS is Africa's leading environmental sustainability organization. We are on a mission to combat the devastating effects of climate change through aggressive reforestation, carbon offset programs, and grassroots community engagement.</p>
-          <p>We believe that environmental action isn't just about planting trees — it's about restoring ecosystems, educating the next generation, and building sustainable economies that thrive alongside nature, not at its expense.</p>
-        </div>
-        <div class="mt-10 grid sm:grid-cols-2 gap-6">
-          <!-- Mission -->
-          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mb-4 text-primary">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Our Mission</h3>
-            <p class="text-sm text-gray-600">To drive impactful climate action across Africa through sustainable forestry and community empowerment.</p>
-          </div>
-          <!-- Vision -->
-          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-            <div class="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-4 text-emerald-600">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>
-            </div>
-            <h3 class="text-xl font-bold font-heading mb-2 text-gray-900">Our Vision</h3>
-            <p class="text-sm text-gray-600">A restored, resilient, and green Africa where people and nature coexist in perfect harmony.</p>
-          </div>
-        </div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6 leading-tight">
+          About <span class="text-primary">Eco Tree Solutions</span>
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">An environmental sustainability organization rooted in purpose, growing for the future.</p>
       </div>
 
-      <!-- Visual (no photo — replaced with rich green card) -->
-      <div class="reveal reveal-delay-2">
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl" style="background:linear-gradient(135deg,#052e16 0%,#14532d 50%,#166534 100%);padding:3rem 2.5rem;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;">
-          <!-- Top leaves decoration -->
+      <!-- Story -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-6">Our Story</h2>
+          <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+            <p>ECO TREE SOLUTIONS was founded with a singular, urgent belief: that the health of our planet depends on the choices we make today. Born in Nigeria, our work spans communities across Africa, where the effects of deforestation, land degradation, and climate change are most acutely felt.</p>
+            <p>We started with a simple act — planting trees. But we quickly realized that lasting environmental change requires more than seedlings in the ground. It requires community ownership, scientific rigour, policy engagement, and corporate accountability. That realization shaped everything we do.</p>
+            <p>Today, Eco Tree Solutions is a growing force for environmental action, combining grassroots energy with international-standard conservation practices to build a truly resilient, green Africa.</p>
+          </div>
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-2xl" style="background:linear-gradient(135deg,#052e16 0%,#14532d 50%,#166534 100%);padding:3rem 2.5rem;min-height:400px;display:flex;flex-direction:column;justify-content:space-between;">
           <div class="flex justify-center mb-8">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+            <svg width="100" height="100" viewBox="0 0 120 120" fill="none">
               <circle cx="60" cy="60" r="55" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
               <ellipse cx="60" cy="45" rx="22" ry="35" fill="#22c55e" opacity="0.7" transform="rotate(-20 60 45)"/>
               <ellipse cx="72" cy="40" rx="18" ry="30" fill="#34d399" opacity="0.5" transform="rotate(15 72 40)"/>
               <ellipse cx="48" cy="55" rx="14" ry="24" fill="#22c55e" opacity="0.4" transform="rotate(-35 48 55)"/>
               <rect x="58" y="60" width="4" height="35" rx="2" fill="#166534"/>
-              <ellipse cx="60" cy="100" rx="20" ry="6" fill="#052e16" opacity="0.5"/>
             </svg>
           </div>
-          <div class="space-y-6">
-            <div class="bg-white/10 border border-white/20 rounded-2xl p-5 backdrop-blur-sm">
-              <p class="text-white text-lg font-medium leading-relaxed italic">
-                "The best time to plant a tree was twenty years ago. The second best time is now."
-              </p>
+          <div class="space-y-4">
+            <div class="rounded-2xl p-5" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2)">
+              <p class="text-white text-lg font-medium leading-relaxed italic">"The best time to plant a tree was twenty years ago. The second best time is now."</p>
             </div>
             <div class="grid grid-cols-3 gap-4 text-center">
-              <div><div class="text-3xl font-bold font-heading text-emerald-400">500+</div><div class="text-xs text-white/60 uppercase tracking-wider mt-1">Trees</div></div>
-              <div><div class="text-3xl font-bold font-heading text-emerald-400">30+</div><div class="text-xs text-white/60 uppercase tracking-wider mt-1">Communities</div></div>
-              <div><div class="text-3xl font-bold font-heading text-emerald-400">500+</div><div class="text-xs text-white/60 uppercase tracking-wider mt-1">Hectares</div></div>
+              <div><div class="text-3xl font-bold font-heading" style="color:#34d399">500+</div><div class="text-xs uppercase tracking-wider mt-1" style="color:rgba(255,255,255,0.6)">Trees</div></div>
+              <div><div class="text-3xl font-bold font-heading" style="color:#34d399">10+</div><div class="text-xs uppercase tracking-wider mt-1" style="color:rgba(255,255,255,0.6)">Communities</div></div>
+              <div><div class="text-3xl font-bold font-heading" style="color:#34d399">15+</div><div class="text-xs uppercase tracking-wider mt-1" style="color:rgba(255,255,255,0.6)">Projects</div></div>
             </div>
           </div>
         </div>
-        <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-amber-100 rounded-3xl -z-10 hidden lg:block"></div>
       </div>
+
+      <!-- Mission & Vision -->
+      <div class="grid md:grid-cols-2 gap-8 mb-24">
+        <div class="bg-gray-50 p-10 rounded-3xl border border-gray-100">
+          <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center mb-6 text-primary">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading mb-4 text-gray-900">Our Mission</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">To drive impactful, measurable climate action across Africa through sustainable forestry, community empowerment, and corporate environmental accountability — creating ecosystems that thrive for generations.</p>
+        </div>
+        <div class="bg-gray-50 p-10 rounded-3xl border border-gray-100">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center mb-6" style="color:#059669">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading mb-4 text-gray-900">Our Vision</h3>
+          <p class="text-gray-600 text-lg leading-relaxed">A restored, resilient, and green Africa where people and nature coexist in perfect harmony — where every community is an active steward of the land it depends on.</p>
+        </div>
+      </div>
+
+      <!-- Core Values -->
+      <div class="mb-24">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-12 text-center">Our Core Values</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#dcfce7;color:#166534">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+            </div>
+            <h4 class="font-bold font-heading text-lg mb-2">Integrity</h4>
+            <p class="text-gray-600 text-sm">We say what we do and do what we say, with full transparency at every step.</p>
+          </div>
+          <div class="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#dcfce7;color:#166534">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h4 class="font-bold font-heading text-lg mb-2">Community First</h4>
+            <p class="text-gray-600 text-sm">Every decision we make centres the people who live alongside the ecosystems we protect.</p>
+          </div>
+          <div class="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#dcfce7;color:#166534">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <h4 class="font-bold font-heading text-lg mb-2">Science-Led</h4>
+            <p class="text-gray-600 text-sm">All our programs are grounded in environmental science and conservation best practice.</p>
+          </div>
+          <div class="text-center p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#dcfce7;color:#166534">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <h4 class="font-bold font-heading text-lg mb-2">Long-term Thinking</h4>
+            <p class="text-gray-600 text-sm">We plant seeds for the next generation, not just for today's metrics.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="rounded-3xl p-12 text-center text-white" style="background:linear-gradient(135deg,#052e16,#166534)">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Be Part of the Change</h2>
+        <p class="text-lg mb-8 max-w-xl mx-auto" style="color:rgba(220,252,231,0.85)">Whether you want to volunteer, partner with us, or simply learn more — we'd love to hear from you.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#" onclick="showPage('volunteer')" class="px-8 py-4 rounded-full bg-emerald-500 text-white font-semibold hover:bg-emerald-400 transition-colors">Volunteer With Us</a>
+          <a href="#" onclick="showPage('contact')" class="px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-primary transition-colors">Get In Touch</a>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
+</div><!-- end page-about -->
 
-<!-- ========== SERVICES ========== -->
-<section id="services" class="py-24" style="background:#f8fafc">
-  <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
-        <span class="text-sm font-bold tracking-wide uppercase">Our Expertise</span>
-      </div>
-      <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">Comprehensive Environmental Solutions</h2>
-      <p class="text-lg text-gray-600">We deliver actionable strategies and hands-on execution to help communities, governments, and corporations achieve their environmental goals.</p>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Card 1 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+<!-- ================================================================
+     PAGE: SERVICES
+     ================================================================ -->
+<div id="page-services" class="page-section">
+  <div class="pt-28 pb-24" style="background:#f8fafc">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">What We Do</span>
         </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Tree Planting</h3>
-        <p class="text-gray-600 leading-relaxed">Large-scale afforestation and urban greening initiatives.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6">Our Services</h1>
+        <p class="text-xl text-gray-600">Comprehensive environmental solutions designed to create lasting, measurable impact across communities and ecosystems.</p>
       </div>
-      <!-- Card 2 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-1">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Climate Awareness</h3>
-        <p class="text-gray-600 leading-relaxed">Campaigns educating communities on climate change.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 3 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-2">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Environmental Consultancy</h3>
-        <p class="text-gray-600 leading-relaxed">Expert advisory for sustainable business practices.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 4 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-3">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Corporate Sustainability</h3>
-        <p class="text-gray-600 leading-relaxed">Helping businesses implement CSR environmental goals.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 5 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Carbon Offsets</h3>
-        <p class="text-gray-600 leading-relaxed">Verified carbon credit programs for organizations.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 6 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-1">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m8 0h3a2 2 0 002-2v-3"/><path d="M12 8v8M8 12h8"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Reforestation Projects</h3>
-        <p class="text-gray-600 leading-relaxed">Restoring degraded lands to their natural state.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 7 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-2">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Community Education</h3>
-        <p class="text-gray-600 leading-relaxed">Empowering youth with environmental knowledge.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-      <!-- Card 8 -->
-      <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden reveal reveal-delay-3">
-        <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Impact Assessments</h3>
-        <p class="text-gray-600 leading-relaxed">Rigorous environmental footprint analysis.</p>
-        <div class="card-bar absolute bottom-0 left-0"></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ========== WHY CHOOSE US ========== -->
-<section class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-6">
-    <div class="flex flex-col lg:flex-row gap-16 items-start">
-      <div class="lg:w-1/3 reveal">
-        <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6 leading-tight">Why Partner<br/>With Us?</h2>
-        <p class="text-lg text-gray-600 mb-8">Real environmental change requires expertise, transparency, and a commitment to longevity.</p>
-        <a href="mailto:contact@ecotreesolutions.com.ng?subject=Partnership%20Enquiry" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary border-2 border-primary rounded-full hover:bg-primary hover:text-white transition-colors">
-          Start a Partnership
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Tree Planting</h3>
+          <p class="text-gray-600 leading-relaxed">Large-scale afforestation and urban greening initiatives deploying native species chosen for maximum ecological benefit and survival rates.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Climate Awareness</h3>
+          <p class="text-gray-600 leading-relaxed">Targeted campaigns and school programs that educate communities on climate change, biodiversity, and how individual actions create collective impact.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Environmental Consultancy</h3>
+          <p class="text-gray-600 leading-relaxed">Expert advisory services helping businesses, governments, and NGOs navigate environmental regulations and design sustainable operational frameworks.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M3 7v1a3 3 0 006 0V7m0 1a3 3 0 006 0V7m0 1a3 3 0 006 0V7H3l2-4h14l2 4"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Corporate Sustainability</h3>
+          <p class="text-gray-600 leading-relaxed">Helping businesses implement meaningful CSR environmental goals — from carbon accounting to verified offset programs — that go beyond compliance.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Carbon Offsets</h3>
+          <p class="text-gray-600 leading-relaxed">Verified carbon credit programs that allow organizations to offset their emissions through our certified, monitored reforestation projects.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m8 0h3a2 2 0 002-2v-3"/><path d="M12 8v8M8 12h8"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Reforestation Projects</h3>
+          <p class="text-gray-600 leading-relaxed">Restoring degraded lands to their natural state using locally sourced native species and traditional ecological knowledge combined with modern science.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Community Education</h3>
+          <p class="text-gray-600 leading-relaxed">Empowering youth and community leaders with environmental knowledge and practical conservation skills for lasting grassroots change.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+        <div class="service-card group bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden">
+          <div class="service-icon w-14 h-14 rounded-xl bg-gray-100 text-primary flex items-center justify-center mb-6 transition-all duration-300">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="text-xl font-bold font-heading mb-3 text-gray-900 group-hover:text-primary transition-colors">Impact Assessments</h3>
+          <p class="text-gray-600 leading-relaxed">Rigorous environmental footprint analysis and biodiversity assessments for projects, helping stakeholders understand and mitigate their ecological impact.</p>
+          <div class="card-bar absolute bottom-0 left-0"></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 rounded-3xl p-12 text-center text-white" style="background:linear-gradient(135deg,#052e16,#166534)">
+        <h2 class="text-3xl font-heading font-bold mb-4">Ready to get started?</h2>
+        <p class="text-lg mb-8" style="color:rgba(220,252,231,0.85)">Reach out and let's design an environmental program that fits your goals.</p>
+        <a href="mailto:contact@ecotreesolutions.com.ng?subject=Service%20Enquiry" class="inline-block px-10 py-4 rounded-full bg-emerald-500 text-white font-bold text-lg hover:bg-emerald-400 transition-colors">
+          Enquire Now
         </a>
       </div>
-      <div class="lg:w-2/3 w-full grid sm:grid-cols-2 gap-x-8 gap-y-10">
-        <div class="flex gap-4 reveal">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Verified Practices</h3><p class="text-gray-600">Our methodologies follow international conservation standards ensuring genuine impact.</p></div>
+    </div>
+  </div>
+</div><!-- end page-services -->
+
+
+<!-- ================================================================
+     PAGE: IMPACT REPORT
+     ================================================================ -->
+<div id="page-impact-report" class="page-section">
+  <div class="pt-28 pb-24 bg-white">
+    <div class="max-w-5xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">Transparency &amp; Accountability</span>
         </div>
-        <div class="flex gap-4 reveal reveal-delay-1">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Experienced Team</h3><p class="text-gray-600">Led by environmental scientists, forestry experts, and community leaders.</p></div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6">Services Impact Report</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">A clear picture of what we have achieved so far, the targets we are chasing, and the difference our work is making on the ground.</p>
+      </div>
+
+      <!-- Summary Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+          <div class="text-4xl font-bold font-heading text-primary mb-1">500+</div>
+          <div class="text-sm text-gray-500 uppercase tracking-wide font-medium">Trees Planted</div>
         </div>
-        <div class="flex gap-4 reveal reveal-delay-2">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-          </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Community Focused</h3><p class="text-gray-600">We ensure local communities benefit economically from conservation efforts.</p></div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+          <div class="text-4xl font-bold font-heading text-primary mb-1">15+</div>
+          <div class="text-sm text-gray-500 uppercase tracking-wide font-medium">Active Projects</div>
         </div>
-        <div class="flex gap-4 reveal reveal-delay-3">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Transparent Reporting</h3><p class="text-gray-600">Full accountability with trackable metrics and regular stakeholder reports.</p></div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+          <div class="text-4xl font-bold font-heading text-primary mb-1">10+</div>
+          <div class="text-sm text-gray-500 uppercase tracking-wide font-medium">Communities</div>
         </div>
-        <div class="flex gap-4 reveal">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-          </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Sustainable Solutions</h3><p class="text-gray-600">We don't just plant trees; we build ecosystems that sustain themselves.</p></div>
+        <div class="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100">
+          <div class="text-4xl font-bold font-heading text-primary mb-1">10+</div>
+          <div class="text-sm text-gray-500 uppercase tracking-wide font-medium">Programs Running</div>
         </div>
-        <div class="flex gap-4 reveal reveal-delay-1">
-          <div class="shrink-0 w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-primary mt-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+
+      <!-- Progress vs Targets -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-heading font-bold text-gray-900 mb-8">Progress Toward 2030 Targets</h2>
+        <div class="space-y-8" id="impact-bars">
+          <!-- bars injected by JS -->
+        </div>
+      </div>
+
+      <!-- Service-by-service breakdown -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-heading font-bold text-gray-900 mb-8">Program Highlights</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold font-heading mb-2">Tree Planting Program</h3>
+                <p class="text-gray-600 mb-4">Our flagship initiative has planted 500+ trees across multiple sites, prioritizing degraded land recovery and urban heat island reduction in communities across Nigeria.</p>
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">500+ Trees</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">Native Species Only</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">85% Survival Rate Target</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div><h3 class="text-xl font-bold font-heading mb-2">Long-term Impact</h3><p class="text-gray-600">Monitoring programs that run for years to guarantee sapling survival.</p></div>
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold font-heading mb-2">Community Education Program</h3>
+                <p class="text-gray-600 mb-4">Running across 10+ communities, our education programs equip local youth and adults with the knowledge and skills to become active environmental stewards.</p>
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">10+ Communities Reached</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166634">School Partnerships</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166634">Youth-Led Action</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold font-heading mb-2">Corporate Sustainability Partnerships</h3>
+                <p class="text-gray-600 mb-4">We have partnered with organizations to design and implement CSR environmental programs that create real, auditable impact — from offset programs to greening commitments.</p>
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">15+ Active Projects</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">Verified Outcomes</span>
+                  <span class="px-3 py-1 rounded-full text-sm font-medium" style="background:#dcfce7;color:#166534">Stakeholder Reports</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Get the full report -->
+      <div class="rounded-3xl p-12 text-center text-white" style="background:linear-gradient(135deg,#052e16,#166534)">
+        <h2 class="text-3xl font-heading font-bold mb-4">Request the Full Impact Report</h2>
+        <p class="text-lg mb-8 max-w-xl mx-auto" style="color:rgba(220,252,231,0.85)">For a detailed breakdown of our project data, methodology, and outcomes, reach out to us directly.</p>
+        <a href="mailto:contact@ecotreesolutions.com.ng?subject=Impact%20Report%20Request" class="inline-block px-10 py-4 rounded-full bg-emerald-500 text-white font-bold text-lg hover:bg-emerald-400 transition-colors">
+          Request Report
+        </a>
+      </div>
+    </div>
+  </div>
+</div><!-- end page-impact-report -->
+
+
+<!-- ================================================================
+     PAGE: VOLUNTEER
+     ================================================================ -->
+<div id="page-volunteer" class="page-section">
+  <div class="pt-28 pb-24" style="background:#f8fafc">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">Join the Movement</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6">Volunteer With Us</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Lend your time, skills, and energy to the fight against climate change. Fill in the form below and we'll be in touch.</p>
+      </div>
+
+      <!-- Why volunteer -->
+      <div class="grid sm:grid-cols-3 gap-6 mb-16">
+        <div class="bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#dcfce7;color:#166534">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+          </div>
+          <h3 class="font-bold font-heading text-lg mb-2">Plant Trees</h3>
+          <p class="text-gray-600 text-sm">Get hands-on at planting events and restoration sites across Nigeria.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#dcfce7;color:#166534">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3 class="font-bold font-heading text-lg mb-2">Educate Communities</h3>
+          <p class="text-gray-600 text-sm">Share your skills as a facilitator, trainer, or mentor in our education programs.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center border border-gray-100 shadow-sm">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#dcfce7;color:#166534">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-bold font-heading text-lg mb-2">Spread the Word</h3>
+          <p class="text-gray-600 text-sm">Become an ambassador for Eco Tree Solutions in your network and community.</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-10">
+        <h2 class="text-2xl font-bold font-heading text-gray-900 mb-8">Volunteer Application Form</h2>
+        <form id="volunteerForm" onsubmit="submitVolunteer(event)" class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="form-label">First Name *</label>
+              <input type="text" name="firstname" required placeholder="Amina" class="form-input" />
+            </div>
+            <div>
+              <label class="form-label">Last Name *</label>
+              <input type="text" name="lastname" required placeholder="Okonkwo" class="form-input" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label class="form-label">Email Address *</label>
+              <input type="email" name="email" required placeholder="you@example.com" class="form-input" />
+            </div>
+            <div>
+              <label class="form-label">Phone Number</label>
+              <input type="tel" name="phone" placeholder="+234 800 000 0000" class="form-input" />
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Location / State *</label>
+            <input type="text" name="location" required placeholder="Lagos, Nigeria" class="form-input" />
+          </div>
+          <div>
+            <label class="form-label">Area of Interest *</label>
+            <select name="interest" required class="form-input" style="cursor:pointer">
+              <option value="">Select an area...</option>
+              <option>Tree Planting &amp; Reforestation</option>
+              <option>Community Education</option>
+              <option>Environmental Advocacy</option>
+              <option>Social Media &amp; Communications</option>
+              <option>Research &amp; Documentation</option>
+              <option>Corporate Outreach</option>
+              <option>General Volunteering</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Availability</label>
+            <select name="availability" class="form-input" style="cursor:pointer">
+              <option value="">Select availability...</option>
+              <option>Weekdays</option>
+              <option>Weekends</option>
+              <option>Both weekdays and weekends</option>
+              <option>Flexible / Project-based</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Tell Us About Yourself</label>
+            <textarea name="message" rows="4" placeholder="Share your background, skills, why you want to volunteer, and anything else you'd like us to know..." class="form-input" style="resize:vertical"></textarea>
+          </div>
+          <button type="submit" class="w-full py-4 rounded-xl font-bold text-lg text-white transition-all hover:opacity-90" style="background:#166534">
+            Submit Application
+          </button>
+          <p class="text-sm text-gray-500 text-center">Your application will be sent to our team at <strong>contact@ecotreesolutions.com.ng</strong> and we will respond within 3 business days.</p>
+        </form>
+        <div id="volunteer-success" class="hidden text-center py-10">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background:#dcfce7;color:#166534">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold font-heading mb-3">Application Sent!</h3>
+          <p class="text-gray-600 text-lg">Thank you for applying. Your email client should have opened with your details. We'll be in touch within 3 business days.</p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div><!-- end page-volunteer -->
 
-<!-- ========== CLIMATE IMPACT ========== -->
-<section id="impact" class="py-24 relative overflow-hidden" style="background:#14532d">
-  <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image:radial-gradient(circle,white 1px,transparent 1px);background-size:30px 30px"></div>
-  <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-      <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Measurable Climate Impact</h2>
-      <p class="text-emerald-100/80 text-lg">We don't just make promises; we track every tree, every ton of carbon, and every community member empowered.</p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4" id="impact-grid">
-      <!-- Ring counters generated by JS -->
-    </div>
-  </div>
-</section>
 
-<!-- ========== PROCESS ========== -->
-<section id="process" class="py-24 bg-white overflow-hidden">
-  <div class="max-w-4xl mx-auto px-4 md:px-6">
-    <div class="text-center mb-20 reveal">
-      <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-6">How We Restore Nature</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Reforestation is a science. Our meticulous 5-step process ensures that every sapling planted grows into a permanent part of the ecosystem.</p>
-    </div>
+<!-- ================================================================
+     PAGE: OUR PROCESS
+     ================================================================ -->
+<div id="page-process" class="page-section">
+  <div class="pt-28 pb-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-20">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">How It Works</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6">Our Process</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Reforestation is a science. Our meticulous 5-step approach ensures every sapling planted grows into a permanent part of the ecosystem.</p>
+      </div>
 
-    <div class="relative">
-      <div class="timeline-line"></div>
-      <div class="space-y-12 md:space-y-20">
+      <div class="relative">
+        <div class="timeline-line"></div>
+        <div class="space-y-12 md:space-y-20">
 
-        <!-- Step 1 -->
-        <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center reveal">
-          <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          </div>
-          <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
-            <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
-              <h3 class="text-2xl font-bold font-heading mb-3 text-primary">1. Land Assessment</h3>
-              <p class="text-gray-700 leading-relaxed text-lg">Evaluating soil health, biodiversity, and local ecosystem needs to determine the right species to plant.</p>
+          <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center">
+            <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </div>
+            <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
+              <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                <div class="text-sm font-bold uppercase tracking-wider text-primary mb-2">Step 01</div>
+                <h3 class="text-2xl font-bold font-heading mb-3">Land Assessment</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">We evaluate soil health, existing biodiversity, water availability, and local ecosystem needs to determine the most suitable native species to plant and identify areas with the highest restoration potential.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Step 2 -->
-        <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
-          <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </div>
-          <div class="ml-20 md:ml-0 md:w-1/2 md:pr-14">
-            <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
-              <h3 class="text-2xl font-bold font-heading mb-3 text-primary">2. Strategic Planning</h3>
-              <p class="text-gray-700 leading-relaxed text-lg">Collaborating with local communities and experts to design a sustainable planting blueprint.</p>
+          <div class="relative flex flex-col md:flex-row items-start md:items-center">
+            <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div class="ml-20 md:ml-0 md:w-1/2 md:pr-14">
+              <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                <div class="text-sm font-bold uppercase tracking-wider text-primary mb-2">Step 02</div>
+                <h3 class="text-2xl font-bold font-heading mb-3">Strategic Planning</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">Collaborating with local communities, government bodies, and environmental experts to co-design a sustainable planting blueprint that ensures community buy-in and long-term stewardship from day one.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Step 3 -->
-        <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center reveal">
-          <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
-          </div>
-          <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
-            <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
-              <h3 class="text-2xl font-bold font-heading mb-3 text-primary">3. Active Planting</h3>
-              <p class="text-gray-700 leading-relaxed text-lg">Mobilizing volunteers and professionals to plant native trees during optimal climate windows.</p>
+          <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center">
+            <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 8 4 4 4c0 4 2 8 8 8zm0 0c0-5 4-8 8-8 0 4-2 8-8 8"/></svg>
+            </div>
+            <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
+              <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                <div class="text-sm font-bold uppercase tracking-wider text-primary mb-2">Step 03</div>
+                <h3 class="text-2xl font-bold font-heading mb-3">Active Planting</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">Mobilizing volunteers, community members, and trained professionals to plant native trees during optimal climate windows, using proven techniques to maximise survival rates from the start.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Step 4 -->
-        <div class="relative flex flex-col md:flex-row items-start md:items-center reveal">
-          <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div class="ml-20 md:ml-0 md:w-1/2 md:pr-14">
-            <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
-              <h3 class="text-2xl font-bold font-heading mb-3 text-primary">4. Rigorous Monitoring</h3>
-              <p class="text-gray-700 leading-relaxed text-lg">Tracking sapling growth, survival rates, and carbon absorption metrics over 3-5 years.</p>
+          <div class="relative flex flex-col md:flex-row items-start md:items-center">
+            <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="ml-20 md:ml-0 md:w-1/2 md:pr-14">
+              <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                <div class="text-sm font-bold uppercase tracking-wider text-primary mb-2">Step 04</div>
+                <h3 class="text-2xl font-bold font-heading mb-3">Rigorous Monitoring</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">Tracking sapling growth, survival rates, biodiversity recovery, and carbon absorption metrics over 3–5 years with regular site visits and data reporting to stakeholders.</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Step 5 -->
-        <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center reveal">
-          <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-          </div>
-          <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
-            <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
-              <h3 class="text-2xl font-bold font-heading mb-3 text-primary">5. Long-term Sustainability</h3>
-              <p class="text-gray-700 leading-relaxed text-lg">Handing over ecosystem stewardship to educated, economically-empowered local communities.</p>
+          <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center">
+            <div class="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-primary border-4 border-white shadow-lg flex items-center justify-center text-white z-10 md:-translate-x-1/2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div class="ml-20 md:ml-0 md:w-1/2 md:pl-14">
+              <div class="process-card bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                <div class="text-sm font-bold uppercase tracking-wider text-primary mb-2">Step 05</div>
+                <h3 class="text-2xl font-bold font-heading mb-3">Long-term Sustainability</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">Handing over full ecosystem stewardship to educated, economically empowered local communities — ensuring the forest becomes a self-sustaining resource for generations to come.</p>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
+      </div>
+
+      <div class="mt-20 rounded-3xl p-10 text-center text-white" style="background:linear-gradient(135deg,#052e16,#166534)">
+        <h2 class="text-2xl font-bold font-heading mb-4">Want to see our process in action?</h2>
+        <p class="mb-6" style="color:rgba(220,252,231,0.85)">Reach out to discuss how we can start a project in your community or region.</p>
+        <a href="#" onclick="showPage('contact')" class="inline-block px-8 py-4 rounded-full bg-emerald-500 text-white font-bold hover:bg-emerald-400 transition-colors">
+          Contact Us
+        </a>
       </div>
     </div>
   </div>
-</section>
+</div><!-- end page-process -->
 
-<!-- ========== PARTNERS ========== -->
-<section class="py-16 bg-white border-y border-gray-100 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
-    <h3 class="text-sm font-bold text-gray-400 tracking-widest uppercase">Trusted by leading organizations</h3>
-  </div>
-  <div class="relative flex overflow-hidden">
-    <div class="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to right,white,transparent)"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to left,white,transparent)"></div>
-    <div class="marquee-track">
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Ministry of Environment</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Global Green Fund</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Earth Action NGO</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Pan-African Bank CSR</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">West African Forestry Commission</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Sustainable Futures Ltd</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">EcoBuild Developers</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Climate Action Network</span>
-      <!-- Duplicate for seamless loop -->
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Ministry of Environment</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Global Green Fund</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Earth Action NGO</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Pan-African Bank CSR</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">West African Forestry Commission</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Sustainable Futures Ltd</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">EcoBuild Developers</span>
-      <span class="mx-8 px-6 py-3 rounded-xl bg-gray-50 text-gray-600 font-semibold font-heading text-lg whitespace-nowrap">Climate Action Network</span>
+
+<!-- ================================================================
+     PAGE: CONTACT
+     ================================================================ -->
+<div id="page-contact" class="page-section">
+  <div class="pt-28 pb-24" style="background:#f8fafc">
+    <div class="max-w-6xl mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-primary mb-4">
+          <span class="text-sm font-bold tracking-wide uppercase">Get In Touch</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-gray-900 mb-6">Contact Us</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Have a question, partnership idea, or just want to say hello? We'd love to hear from you.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="text-2xl font-bold font-heading mb-6">Reach Us Directly</h2>
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900 mb-1">Email</div>
+                  <a href="mailto:contact@ecotreesolutions.com.ng" class="text-primary hover:underline">contact@ecotreesolutions.com.ng</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900 mb-1">Phone</div>
+                  <a href="tel:+2348089519852" class="text-primary hover:underline">+234 808 951 9852</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900 mb-1">X (Twitter)</div>
+                  <a href="https://twitter.com/ecotreesolutns" target="_blank" rel="noreferrer" class="text-primary hover:underline">@ecotreesolutns</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:#dcfce7;color:#166534">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </div>
+                <div>
+                  <div class="font-semibold text-gray-900 mb-1">Instagram</div>
+                  <a href="https://instagram.com/ecotreesolutions" target="_blank" rel="noreferrer" class="text-primary hover:underline">@ecotreesolutions</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response commitment -->
+          <div class="rounded-2xl p-8 border border-green-100" style="background:#f0fdf4">
+            <h3 class="font-bold font-heading text-lg mb-3 text-primary">We respond within 3 business days</h3>
+            <p class="text-gray-600">Whether it's a partnership enquiry, a volunteer question, or media request — our team reads every message and will get back to you promptly.</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-10">
+          <h2 class="text-2xl font-bold font-heading text-gray-900 mb-8">Send Us a Message</h2>
+          <form id="contactForm" onsubmit="submitContact(event)" class="space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="form-label">Full Name *</label>
+                <input type="text" name="name" required placeholder="Your full name" class="form-input" />
+              </div>
+              <div>
+                <label class="form-label">Email Address *</label>
+                <input type="email" name="email" required placeholder="you@example.com" class="form-input" />
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Phone Number</label>
+              <input type="tel" name="phone" placeholder="+234 800 000 0000" class="form-input" />
+            </div>
+            <div>
+              <label class="form-label">Subject *</label>
+              <select name="subject" required class="form-input" style="cursor:pointer">
+                <option value="">Select a subject...</option>
+                <option>Partnership Enquiry</option>
+                <option>Volunteer Interest</option>
+                <option>Corporate Sustainability</option>
+                <option>Media / Press</option>
+                <option>General Question</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Your Message *</label>
+              <textarea name="message" rows="5" required placeholder="Tell us how we can help you..." class="form-input" style="resize:vertical"></textarea>
+            </div>
+            <button type="submit" class="w-full py-4 rounded-xl font-bold text-lg text-white transition-all hover:opacity-90" style="background:#166534">
+              Send Message
+            </button>
+            <p class="text-sm text-gray-500 text-center">Your message will be sent to <strong>contact@ecotreesolutions.com.ng</strong></p>
+          </form>
+          <div id="contact-success" class="hidden text-center py-10">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background:#dcfce7;color:#166534">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h3 class="text-2xl font-bold font-heading mb-3">Message Sent!</h3>
+            <p class="text-gray-600 text-lg">Your email client should have opened with your message. We'll respond within 3 business days.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div><!-- end page-contact -->
 
-<!-- ========== CTA ========== -->
-<section id="contact" class="relative py-32 overflow-hidden" style="background:#166534">
-  <div class="absolute inset-0" style="background:linear-gradient(135deg,#14532d,#166534,#0f4623)"></div>
-  <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white/5 blur-3xl animate-float pointer-events-none"></div>
-  <div class="absolute bottom-10 right-20 w-72 h-72 rounded-full blur-3xl pointer-events-none" style="background:rgba(212,175,55,0.07);animation:float 9s ease-in-out infinite"></div>
 
-  <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
-    <h2 class="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
-      Ready to Make<br/>an Impact?
-    </h2>
-    <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium" style="color:rgba(220,252,231,0.9)">
-      Become part of the movement towards a greener, more sustainable future for Africa. Every action counts.
-    </p>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <a href="mailto:contact@ecotreesolutions.com.ng?subject=Donation%20Enquiry" class="btn-gold w-full sm:w-auto px-10 py-5 rounded-full font-bold text-xl transition-all hover:scale-105" style="background:#D4AF37;color:#111827">
-        Donate Now
-      </a>
-      <a href="mailto:contact@ecotreesolutions.com.ng?subject=Volunteer%20Enquiry" class="w-full sm:w-auto px-10 py-5 rounded-full bg-emerald-500 text-white font-bold text-xl hover:bg-emerald-400 transition-all hover:scale-105">
-        Volunteer Today
-      </a>
-      <a href="mailto:contact@ecotreesolutions.com.ng?subject=Partnership%20Enquiry" class="w-full sm:w-auto px-10 py-5 rounded-full border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-primary transition-all">
-        Start a Partnership
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
-<footer style="background:#14532d" class="text-white pt-20 pb-10">
+<!-- ================================================================
+     SHARED FOOTER (shown on all pages)
+     ================================================================ -->
+<footer id="site-footer" style="background:#14532d" class="text-white pt-20 pb-10">
   <div class="max-w-7xl mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
@@ -604,22 +1067,19 @@
       <div class="space-y-6">
         <div class="flex items-center gap-3">
           <img src="./logo.png" alt="Eco Tree Solutions" class="h-12 w-auto brightness-0 invert" />
-          <span class="font-heading font-bold text-lg">ECO TREE <span class="text-emerald-400">SOLUTIONS</span></span>
+          <span class="font-heading font-bold text-lg">ECO TREE <span style="color:#34d399">SOLUTIONS</span></span>
         </div>
         <p class="text-sm leading-relaxed" style="color:rgba(220,252,231,0.7)">
-          Growing a Greener Tomorrow. Dedicated to fighting climate change through sustainable afforestation, education, and community empowerment across Africa.
+          Growing a Greener Tomorrow. Dedicated to fighting climate change through sustainable afforestation, education, and community empowerment.
         </p>
         <div class="flex gap-4">
-          <!-- Twitter / X -->
-          <a href="https://twitter.com/EcoTreeSolutns" target="_blank" rel="noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-colors" style="background:rgba(255,255,255,0.05)">
+          <a href="https://twitter.com/ecotreesolutns" target="_blank" rel="noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style="background:rgba(255,255,255,0.05)" onmouseover="this.style.background='#166534'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <!-- Facebook -->
-          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-colors" style="background:rgba(255,255,255,0.05)">
+          <a href="#" class="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style="background:rgba(255,255,255,0.05)" onmouseover="this.style.background='#166534'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <!-- Instagram -->
-          <a href="https://instagram.com/ecotreesolutions" target="_blank" rel="noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-colors" style="background:rgba(255,255,255,0.05)">
+          <a href="https://instagram.com/ecotreesolutions" target="_blank" rel="noreferrer" class="w-10 h-10 rounded-full flex items-center justify-center transition-colors" style="background:rgba(255,255,255,0.05)" onmouseover="this.style.background='#166534'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           </a>
         </div>
@@ -629,12 +1089,12 @@
       <div>
         <h4 class="font-heading font-bold text-lg mb-6">Quick Links</h4>
         <ul class="space-y-4">
-          <li><a href="#about" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">About Us</a></li>
-          <li><a href="#services" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Our Services</a></li>
-          <li><a href="#impact" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Impact Report</a></li>
-          <li><a href="mailto:contact@ecotreesolutions.com.ng?subject=Volunteer%20Enquiry" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Volunteer</a></li>
-          <li><a href="#process" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Our Process</a></li>
-          <li><a href="#contact" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Contact</a></li>
+          <li><a href="#" onclick="showPage('about')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">About Us</a></li>
+          <li><a href="#" onclick="showPage('services')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Our Services</a></li>
+          <li><a href="#" onclick="showPage('impact-report')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Impact Report</a></li>
+          <li><a href="#" onclick="showPage('volunteer')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Volunteer</a></li>
+          <li><a href="#" onclick="showPage('process')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Our Process</a></li>
+          <li><a href="#" onclick="showPage('contact')" class="text-sm hover:text-white transition-colors" style="color:rgba(220,252,231,0.7)">Contact</a></li>
         </ul>
       </div>
 
@@ -643,26 +1103,26 @@
         <h4 class="font-heading font-bold text-lg mb-6">Contact Us</h4>
         <ul class="space-y-4">
           <li class="flex gap-3" style="color:rgba(220,252,231,0.7)">
-            <svg class="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:#34d399" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             <a href="tel:+2348089519852" class="hover:text-white transition-colors">+234 808 951 9852</a>
           </li>
           <li class="flex gap-3" style="color:rgba(220,252,231,0.7)">
-            <svg class="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:#34d399" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             <a href="mailto:contact@ecotreesolutions.com.ng" class="hover:text-white transition-colors text-sm">contact@ecotreesolutions.com.ng</a>
           </li>
           <li class="flex gap-3" style="color:rgba(220,252,231,0.7)">
-            <svg class="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <a href="https://twitter.com/EcoTreeSolutns" target="_blank" rel="noreferrer" class="hover:text-white transition-colors">@EcoTreeSolutns</a>
+            <svg class="w-5 h-5 shrink-0 mt-0.5" style="color:#34d399" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <a href="https://twitter.com/ecotreesolutns" target="_blank" rel="noreferrer" class="hover:text-white transition-colors">@ecotreesolutns</a>
           </li>
         </ul>
       </div>
 
       <!-- Newsletter -->
       <div>
-        <h4 class="font-heading font-bold text-lg mb-6">Join Our Newsletter</h4>
-        <p class="text-sm mb-4" style="color:rgba(220,252,231,0.7)">Stay updated with our latest projects and impact reports.</p>
-        <form onsubmit="return false" class="flex flex-col gap-3">
-          <input type="email" placeholder="Your email address" required class="rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)" />
+        <h4 class="font-heading font-bold text-lg mb-6">Stay Updated</h4>
+        <p class="text-sm mb-4" style="color:rgba(220,252,231,0.7)">Get our latest news, project updates, and environmental insights.</p>
+        <form onsubmit="subscribeNewsletter(event)" class="flex flex-col gap-3">
+          <input type="email" id="newsletter-email" placeholder="Your email address" required class="rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-emerald-400 text-sm" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)" />
           <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-white font-semibold py-3 rounded-lg transition-colors text-sm">Subscribe</button>
         </form>
       </div>
@@ -678,19 +1138,66 @@
   </div>
 </footer>
 
-<!-- ========== JAVASCRIPT ========== -->
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
 <script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Navbar scroll
+  // ---- PAGE NAVIGATION ----
+  const pages = ['home','about','services','impact-report','volunteer','process','contact'];
+  let currentPage = 'home';
+
+  function showPage(pageId) {
+    // Hide all
+    pages.forEach(p => {
+      const el = document.getElementById('page-' + p);
+      if (el) el.classList.remove('active');
+    });
+    // Show target
+    const target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+    currentPage = pageId;
+
+    // Navbar style
+    const navbar = document.getElementById('navbar');
+    if (pageId === 'home') {
+      navbar.classList.remove('light');
+      navbar.classList.remove('scrolled');
+    } else {
+      navbar.classList.add('light');
+    }
+
+    // Active nav link
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.classList.remove('active-page');
+      if (l.dataset.page === pageId) l.classList.add('active-page');
+    });
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Trigger reveals on new page
+    setTimeout(triggerReveal, 100);
+
+    // Page-specific inits
+    if (pageId === 'impact-report') initImpactBars();
+
+    return false;
+  }
+
+  // ---- NAVBAR SCROLL (only on home) ----
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) navbar.classList.add('scrolled');
-    else navbar.classList.remove('scrolled');
+    if (currentPage === 'home') {
+      if (window.scrollY > 40) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    }
   });
 
-  // Mobile menu
+  // ---- MOBILE MENU ----
   const toggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
@@ -706,14 +1213,21 @@
     iconClose.classList.add('hidden');
   }
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }});
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealObserver.observe(el));
+  // ---- SCROLL REVEAL ----
+  function triggerReveal() {
+    const revealEls = document.querySelectorAll('.page-section.active .reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => {
+      el.classList.remove('visible');
+      obs.observe(el);
+    });
+  }
 
-  // Hero counters (auto-run)
+  // ---- HERO COUNTERS ----
   function animateCounter(el, target, duration) {
     let start = null;
     const step = (timestamp) => {
@@ -727,21 +1241,21 @@
   }
   window.addEventListener('load', () => {
     document.querySelectorAll('.counter').forEach(el => {
-      animateCounter(el, parseInt(el.dataset.target), 2500);
+      animateCounter(el, parseInt(el.dataset.target), 2000);
     });
   });
 
-  // Climate impact rings
-  const impactData = [
-    { value: 50000, suffix: '+', label: 'Trees Planted' },
-    { value: 2500, suffix: '+', label: 'CO\u2082 Absorbed (Tons)' },
-    { value: 30, suffix: '+', label: 'Communities' },
-    { value: 5000, suffix: '+', label: 'Volunteers' },
-    { value: 500, suffix: '+', label: 'Hectares Restored' },
+  // ---- 2030 CLIMATE TARGETS (rings) ----
+  const targetData = [
+    { value: 10000, suffix: '+', label: 'Trees — Target' },
+    { value: 500,   suffix: '+', label: 'CO\u2082 Tonnes — Target' },
+    { value: 50,    suffix: '+', label: 'Communities — Target' },
+    { value: 1000,  suffix: '+', label: 'Volunteers — Target' },
+    { value: 2000,  suffix: '+', label: 'Hectares — Target' },
   ];
   const grid = document.getElementById('impact-grid');
   const R = 60, C = 2 * Math.PI * R;
-  impactData.forEach((d, i) => {
+  targetData.forEach((d, i) => {
     const div = document.createElement('div');
     div.className = 'flex flex-col items-center reveal';
     div.style.transitionDelay = (i * 0.1) + 's';
@@ -750,52 +1264,134 @@
         <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 140 140">
           <circle cx="70" cy="70" r="${R}" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
           <circle class="ring-anim-${i}" cx="70" cy="70" r="${R}" fill="none" stroke="#34d399" stroke-width="8" stroke-linecap="round"
-            style="stroke-dasharray:${C};stroke-dashoffset:${C};transition:stroke-dashoffset 2s ease ${0.2 + i*0.1}s"/>
+            style="stroke-dasharray:${C};stroke-dashoffset:${C};transition:stroke-dashoffset 2s ease ${0.2+i*0.1}s"/>
         </svg>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-2xl font-heading font-bold text-white ring-num-${i}">0</span><span class="text-emerald-400 font-bold text-xl ml-0.5">${d.suffix}</span>
+        <div class="absolute inset-0 flex items-center justify-center flex-col">
+          <span class="text-xl font-heading font-bold text-white ring-num-${i}">0</span>
+          <span style="color:#34d399;font-size:0.7rem;font-weight:700">${d.suffix}</span>
         </div>
       </div>
-      <p class="text-emerald-100 font-medium text-base text-center">${d.label}</p>`;
+      <p style="color:rgba(220,252,231,0.9)" class="font-medium text-sm text-center">${d.label}</p>`;
     grid.appendChild(div);
-    revealObserver.observe(div);
   });
 
-  // Animate rings when in view
   const ringObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const idx = [...grid.children].indexOf(e.target);
       if (idx < 0) return;
-      const d = impactData[idx];
-      const circle = e.target.querySelector(`[class*="ring-anim"]`);
-      const numEl = e.target.querySelector(`[class*="ring-num"]`);
+      const d = targetData[idx];
+      const circle = e.target.querySelector(`.ring-anim-${idx}`);
+      const numEl = e.target.querySelector(`.ring-num-${idx}`);
       if (circle) circle.style.strokeDashoffset = '0';
       if (numEl) animateCounter(numEl, d.value, 2000);
       ringObserver.unobserve(e.target);
     });
   }, { threshold: 0.3 });
-  // Observe after grid is populated
   setTimeout(() => { [...grid.children].forEach(c => ringObserver.observe(c)); }, 100);
 
-  // Floating leaf particles in hero
+  // ---- IMPACT REPORT BARS ----
+  const barData = [
+    { label: 'Trees Planted',        current: 500,  target: 10000, unit: 'of 10,000 target' },
+    { label: 'Communities Reached',  current: 10,   target: 50,    unit: 'of 50 target' },
+    { label: 'Active Projects',       current: 15,   target: 50,    unit: 'of 50 target' },
+    { label: 'Programs Running',      current: 10,   target: 30,    unit: 'of 30 target' },
+    { label: 'Volunteers Mobilized',  current: 200,  target: 1000,  unit: 'of 1,000 target' },
+  ];
+  function initImpactBars() {
+    const container = document.getElementById('impact-bars');
+    if (!container || container.children.length > 0) return;
+    barData.forEach(d => {
+      const pct = Math.round((d.current / d.target) * 100);
+      const row = document.createElement('div');
+      row.innerHTML = `
+        <div class="flex justify-between items-end mb-2">
+          <span class="font-semibold text-gray-800">${d.label}</span>
+          <span class="text-sm text-gray-500">${d.current.toLocaleString()} ${d.unit}</span>
+        </div>
+        <div class="impact-bar">
+          <div class="impact-bar-fill" style="--pct:${pct}%"></div>
+        </div>
+        <div class="text-right text-xs text-primary font-bold mt-1">${pct}% of 2030 target</div>`;
+      container.appendChild(row);
+    });
+    setTimeout(() => {
+      document.querySelectorAll('.impact-bar-fill').forEach(el => el.classList.add('animated'));
+    }, 200);
+  }
+
+  // ---- VOLUNTEER FORM ----
+  function submitVolunteer(e) {
+    e.preventDefault();
+    const f = e.target;
+    const body = [
+      'VOLUNTEER APPLICATION',
+      '====================',
+      'Name: ' + f.firstname.value + ' ' + f.lastname.value,
+      'Email: ' + f.email.value,
+      'Phone: ' + (f.phone.value || 'Not provided'),
+      'Location: ' + f.location.value,
+      'Area of Interest: ' + f.interest.value,
+      'Availability: ' + (f.availability.value || 'Not specified'),
+      '',
+      'About Themselves:',
+      f.message.value || 'Not provided',
+    ].join('\n');
+
+    const subject = 'Volunteer Application - ' + f.firstname.value + ' ' + f.lastname.value;
+    const mailto = 'mailto:contact@ecotreesolutions.com.ng?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+
+    f.classList.add('hidden');
+    document.getElementById('volunteer-success').classList.remove('hidden');
+  }
+
+  // ---- CONTACT FORM ----
+  function submitContact(e) {
+    e.preventDefault();
+    const f = e.target;
+    const body = [
+      'CONTACT FORM SUBMISSION',
+      '=======================',
+      'Name: ' + f.name.value,
+      'Email: ' + f.email.value,
+      'Phone: ' + (f.phone.value || 'Not provided'),
+      'Subject: ' + f.subject.value,
+      '',
+      'Message:',
+      f.message.value,
+    ].join('\n');
+
+    const subject = f.subject.value + ' - ' + f.name.value;
+    const mailto = 'mailto:contact@ecotreesolutions.com.ng?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+
+    f.classList.add('hidden');
+    document.getElementById('contact-success').classList.remove('hidden');
+  }
+
+  // ---- NEWSLETTER ----
+  function subscribeNewsletter(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value;
+    const body = 'Newsletter subscription request from: ' + email;
+    window.location.href = 'mailto:contact@ecotreesolutions.com.ng?subject=' + encodeURIComponent('Newsletter Subscription') + '&body=' + encodeURIComponent(body);
+    e.target.innerHTML = '<p style="color:rgba(220,252,231,0.8);font-size:0.9rem">&#10003; Subscription request sent! Thank you.</p>';
+  }
+
+  // ---- LEAF PARTICLES (hero only) ----
   const particleContainer = document.getElementById('particles');
   const leafSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(52,211,153,0.5)"><path d="M12 22C12 22 4 16 4 10a8 8 0 0116 0c0 6-8 12-8 12z"/></svg>`;
   for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
     const size = 12 + Math.random() * 16;
-    p.style.cssText = `
-      position:absolute;
-      left:${Math.random() * 100}%;
-      bottom:-30px;
-      width:${size}px;
-      height:${size}px;
-      animation: leafFloat ${10 + Math.random() * 12}s ${Math.random() * 8}s linear infinite;
-      opacity:0;
-    `;
+    p.style.cssText = `position:absolute;left:${Math.random()*100}%;bottom:-30px;width:${size}px;height:${size}px;animation:leafFloat ${10+Math.random()*12}s ${Math.random()*8}s linear infinite;opacity:0;`;
     p.innerHTML = leafSvg;
     particleContainer.appendChild(p);
   }
+
+  // Initial reveal
+  triggerReveal();
 </script>
 </body>
 </html>
